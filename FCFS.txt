@@ -1,0 +1,22 @@
+
+# fcfs
+processes = {}  # dictionary  is mutable / changeable (process ka sath execution Time rakhwa raha hain dic mai)
+Exec_time = []
+waiting_time = 0   # waiting time
+turn_around_time = 0  # turn around time
+avg_wait_time = 0  # Average waiting time
+avg_turn_ar_time = 0	 # average turn around time
+n = input("Enter total number of processes: ")
+for i in range(0,n):
+    print "Enter execution time of process ",i
+    et=input()		# execution time
+    Exec_time.append(et)   # Array mai data rakhwa raha ( Updates the list by adding an object to the list)
+    processes[i+1] = [Exec_time[i]]   # dictionary mai rakhwa rha hy processes ko unka execution time ka sath
+
+print "Process ID\t\tWaiting time\t\tTurn around time"
+for i in range(0,n):
+    turn_around_time = Exec_time[i]+waiting_time   # cal turn around time
+    print i,"\t\t\t\t",waiting_time,"\t\t\t\t\t",turn_around_time
+    waiting_time += Exec_time[i]     # calculating waiting time
+    avg_wait_time += waiting_time  # calculating average waiting Time
+    avg_turn_ar_time += turn_around_time  # cal average waiting time

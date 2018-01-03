@@ -1,0 +1,25 @@
+
+#shortesrt job first
+processes = {}   # dictionary
+Exectime = []
+wait_time=0
+turn_arr_Time=0
+n=input("Enter total number of processes: ")
+for i in range(0,n):
+    print "Enter execution time of process :",i
+    et=input()
+    Exectime.append(et)
+    processes[i+1]=[Exectime[i]]
+
+for i in range (0,n):
+    for j in range (0,n):
+        if(Exectime[i]<Exectime[j]):  # jis ka time kaam hy usko array mai sort karwa k rakh day ga
+            swap = Exectime[i]                     # sab sy chota jis ka ho ga wo phely jaye ga
+            Exectime[i] = Exectime[j]
+            Exectime[j] = swap
+
+print "Process ID\t\tWaiting time\t\tTurn around time"
+for i in range(0,n):
+    turn_arr_time = Exectime[i]+wait_time
+    print i,"\t\t\t\t",wait_time,"\t\t\t\t\t",turn_arr_time
+    wait_time+=Exectime[i]
